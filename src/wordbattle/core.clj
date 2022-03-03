@@ -23,6 +23,7 @@
 (defn evaluate-guess [guess correct-word]
   (let [correct-positions (map = guess correct-word)]
 
-    {:right-pos (count (filter true? correct-positions))
+    {:word guess
+     :right-pos (count (filter true? correct-positions))
      :wrong-pos (count-wrong-pos (blank-out guess correct-positions)
                                  (blank-out correct-word correct-positions))}))
