@@ -9,10 +9,10 @@
                  :status :ongoing}))
 
 (defn make-attempt! [match guess]
-  (let [result (word/evaluate-guess guess (:word @match))]
+  (let [result (word/evaluate-guess guess (:word @match))
+        next-status (if (= (:right-pos result) 5) :won :ongoing)]
     (swap! match assoc :attempts (conj (:attempts @match) result))
-    (when (= (:right-pos result) 5)
-      (swap! match assoc :status :won))))
+    (swap! match assoc :status next-status)))
 
 (comment
 (begin-match! current-match)
