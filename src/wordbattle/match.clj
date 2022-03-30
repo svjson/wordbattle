@@ -15,10 +15,12 @@
     (swap! match assoc :status next-status)))
 
 (comment
-(begin-match! current-match)
-(conj (:attempts @current-match) (word/evaluate-guess "SPACE" (:word @current-match)))
-(swap! current-match assoc :attempts (conj (:attempts @current-match) (word/evaluate-guess "SPACE" (:word @current-match))))
-(make-attempt! current-match "TRACK")
-(make-attempt! current-match "SPACE")
-)
+  (begin-match! current-match)
+  (conj (:attempts @current-match) (word/evaluate-guess "SPACE" (:word @current-match)))
+  (swap! current-match assoc :attempts (conj (:attempts @current-match) (word/evaluate-guess "SPACE" (:word @current-match))))
+
+  (make-attempt! current-match "TRACK")
+
+  (make-attempt! current-match "SPACE")
+  )
 
